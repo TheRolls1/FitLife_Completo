@@ -1,5 +1,6 @@
 package com.example.fitlife.ui.screens.auth
 
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -14,6 +15,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.ui.platform.LocalContext
 import kotlinx.coroutines.launch
 
+
 @Composable
 fun LoginScreen(navController: NavController) {
     val context = LocalContext.current
@@ -21,9 +23,11 @@ fun LoginScreen(navController: NavController) {
     val viewModel: AuthViewModel = viewModel(factory = AuthViewModelFactory(authRepo))
     val uiState by viewModel.uiState.collectAsState()
 
+
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val scope = rememberCoroutineScope()
+
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         Text("Iniciar sesión", style = MaterialTheme.typography.h5)
@@ -37,6 +41,7 @@ fun LoginScreen(navController: NavController) {
         }
         Spacer(Modifier.height(8.dp))
         TextButton(onClick = { navController.navigate("register") }) { Text("Registrarse") }
+
 
         Spacer(Modifier.height(12.dp))
         when (uiState) {
@@ -53,3 +58,4 @@ fun LoginScreen(navController: NavController) {
         }
     }
 }
+

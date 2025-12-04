@@ -1,9 +1,12 @@
 package com.example.fitlife.data.dto
 
-data class LoginRequest(val email: String, val password: String)
-data class RegisterRequest(val nombre: String, val email: String, val password: String)
-data class LoginResponse(val token: String, val user: UserDto)
-data class UserDto(val id: String, val nombre: String, val email: String)
+
+/**
+ * Data Transfer Objects (DTOs) para la autenticación y otros datos de la app.
+ */
+
+
+
 
 data class PlanDto(
     val id: String,
@@ -15,4 +18,7 @@ data class PlanDto(
     val precioCLP: Int
 )
 
+
 data class UploadResponse(val url: String)
+
+
