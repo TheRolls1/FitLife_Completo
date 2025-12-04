@@ -25,16 +25,17 @@ import com.example.fitlife.data.models.Workout
 
 @Composable
 fun TrainingScreen(navController: NavController) {
-    // Lista de entrenamientos con una URL de imagen para cada uno
+    // --- URLs DE IMÁGENES ACTUALIZADAS ---
+    // He reemplazado las fotos de ejemplo con imágenes reales de Unsplash.
     val workouts = listOf(
-        Workout(1, "Brazos", "Fortalece y tonifica tus bíceps, tríceps y antebrazos.", "https://picsum.photos/seed/brazos/400/200"),
-        Workout(2, "Espalda", "Desarrolla una espalda fuerte y mejora tu postura.", "https://picsum.photos/seed/espalda/400/200"),
-        Workout(3, "Pecho", "Aumenta la fuerza y el volumen de tus músculos pectorales.", "https://picsum.photos/seed/pecho/400/200"),
-        Workout(4, "Piernas", "Tonifica cuádriceps, isquiotibiales, glúteos y pantorrillas.", "https://picsum.photos/seed/piernas/400/200"),
-        Workout(5, "Hombros", "Define tus hombros y mejora la movilidad.", "https://picsum.photos/seed/hombros/400/200"),
-        Workout(6, "Cuerpo Completo", "Rutinas integrales para todos los grupos musculares.", "https://picsum.photos/seed/fullbody/400/200"),
-        Workout(7, "Bíceps", "Ejercicios específicos para aislar y desarrollar tus bíceps.", "https://picsum.photos/seed/biceps/400/200"),
-        Workout(8, "Tríceps", "Enfócate en la parte posterior de tus brazos.", "https://picsum.photos/seed/triceps/400/200")
+        Workout(1, "Brazos", "Fortalece y tonifica tus bíceps, tríceps y antebrazos.", "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=400"),
+        Workout(2, "Espalda", "Desarrolla una espalda fuerte y mejora tu postura.", "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=400"),
+        Workout(3, "Pecho", "Aumenta la fuerza y el volumen de tus músculos pectorales.", "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=400"),
+        Workout(4, "Piernas", "Tonifica cuádriceps, isquiotibiales, glúteos y pantorrillas.", "https://images.unsplash.com/photo-1576678927484-cc907957088c?w=400"),
+        Workout(5, "Hombros", "Define tus hombros y mejora la movilidad.", "https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=400"),
+        Workout(6, "Cuerpo Completo", "Rutinas integrales para todos los grupos musculares.", "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=400"),
+        Workout(7, "Bíceps", "Ejercicios específicos para aislar y desarrollar tus bíceps.", "https://images.unsplash.com/photo-1599332992376-5dd9f25458a0?w=400"), // Específicamente, un curl de bíceps
+        Workout(8, "Tríceps", "Enfócate en la parte posterior de tus brazos.", "https://images.unsplash.com/photo-1594882645126-14020914d58d?w=400")
     )
 
 
@@ -80,3 +81,4 @@ fun WorkoutCard(workout: Workout, onClick: () -> Unit) {
         }
     }
 }
+
