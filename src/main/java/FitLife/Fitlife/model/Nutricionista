@@ -1,0 +1,8 @@
+package fitlife.model;
+
+public class Nutricionista extends User {
+    private String universidad;
+    private int añosExperiencia;
+
+    // Getters y setters
+}

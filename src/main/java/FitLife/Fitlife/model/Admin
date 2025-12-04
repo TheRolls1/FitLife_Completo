@@ -1,0 +1,7 @@
+package fitlife.model;
+
+public class Admin extends User {
+    private boolean superAdmin;
+
+    // Getters y setters
+}

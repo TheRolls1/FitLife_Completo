@@ -1,0 +1,8 @@
+package fitlife.model;
+
+public class Entrenador extends User {
+    private String especialidad;
+    private int añosExperiencia;
+
+    // Getters y setters
+}

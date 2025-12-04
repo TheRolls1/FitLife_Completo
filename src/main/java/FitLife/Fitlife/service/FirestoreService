@@ -1,0 +1,26 @@
+package FitLife.Fitlife.service;
+
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.*;
+import com.google.firebase.cloud.FirestoreClient;
+import org.springframework.stereotype.Service;
+
+import java.util.concurrent.ExecutionException;
+import java.util.HashMap;
+import java.util.Map;
+
+@Service
+public class FirestoreService {
+
+    private final Firestore db = FirestoreClient.getFirestore();
+
+    public String guardarUsuario(String id, String nombre, String correo) throws ExecutionException, InterruptedException {
+        DocumentReference docRef = db.collection("usuarios").document(id);
+        Map<String, Object> datos = new HashMap<>();
+        datos.put("nombre", nombre);
+        datos.put("correo", correo);
+
+        ApiFuture<WriteResult> result = docRef.set(datos);
+        return result.get().getUpdateTime().toString();
+    }
+}

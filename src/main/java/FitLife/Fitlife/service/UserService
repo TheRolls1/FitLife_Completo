@@ -1,0 +1,50 @@
+package fitlife.service;
+
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.*;
+import com.google.firebase.cloud.FirestoreClient;
+import fitlife.model.User;
+import org.springframework.stereotype.Service;
+
+import java.util.*;
+import java.util.concurrent.ExecutionException;
+
+@Service
+public class UserService {
+
+    private static final String COLLECTION_NAME = "usuarios";
+
+    public String crearUsuario(User user) throws ExecutionException, InterruptedException {
+        Firestore db = FirestoreClient.getFirestore();
+        DocumentReference docRef = db.collection(COLLECTION_NAME).document(user.getEmail());
+        ApiFuture<WriteResult> result = docRef.set(user);
+        return result.get().getUpdateTime().toString();
+    }
+
+    public Optional<User> buscarPorEmail(String email) throws ExecutionException, InterruptedException {
+        Firestore db = FirestoreClient.getFirestore();
+        DocumentReference docRef = db.collection(COLLECTION_NAME).document(email);
+        ApiFuture<DocumentSnapshot> future = docRef.get();
+        DocumentSnapshot document = future.get();
+
+        if (document.exists()) {
+            User user = document.toObject(User.class);
+            return Optional.ofNullable(user);
+        } else {
+            return Optional.empty();
+        }
+    }
+
+    public List<User> listarUsuarios() throws ExecutionException, InterruptedException {
+        Firestore db = FirestoreClient.getFirestore();
+        ApiFuture<QuerySnapshot> future = db.collection(COLLECTION_NAME).get();
+        List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+        List<User> users = new ArrayList<>();
+
+        for (QueryDocumentSnapshot doc : documents) {
+            users.add(doc.toObject(User.class));
+        }
+
+        return users;
+    }
+}

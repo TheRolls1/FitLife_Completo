@@ -1,0 +1,23 @@
+package FitLife.Fitlife.controller;
+
+import FitLife.Fitlife.service.FirestoreService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/firestore")
+public class FirestoreController {
+
+    @Autowired
+    private FirestoreService firestoreService;
+
+    @PostMapping("/guardar")
+    public String guardarUsuario(
+            @RequestParam String id,
+            @RequestParam String nombre,
+            @RequestParam String correo
+    ) throws Exception {
+        return firestoreService.guardarUsuario(id, nombre, correo);
+    }
+}
+

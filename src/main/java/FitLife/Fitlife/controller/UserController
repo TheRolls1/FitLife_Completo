@@ -1,0 +1,28 @@
+package fitlife.controller;
+
+import fitlife.model.User;
+import fitlife.service.UserService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/usuarios")
+public class UserController {
+
+    private final UserService userService;
+
+    public UserController(UserService service) {
+        this.userService = service;
+    }
+
+    @PostMapping("/crear")
+    public User crearUsuario(@RequestBody User user) {
+        return userService.crearUsuario(user);
+    }
+
+    @GetMapping
+    public List<User> listar() {
+        return userService.listarUsuarios();
+    }
+}

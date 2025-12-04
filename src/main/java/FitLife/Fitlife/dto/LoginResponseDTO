@@ -1,0 +1,19 @@
+@PostMapping("/login")
+public LoginResponseDTO login(@RequestBody LoginRequestDTO loginDTO) {
+    // Usuario temporal hardcodeado
+    String demoEmail = "admin@fitlife.com";
+    String demoPassword = "123456";
+
+    if (!loginDTO.getEmail().equals(demoEmail)) {
+        throw new RuntimeException("Usuario no encontrado");
+    }
+
+    if (!loginDTO.getPassword().equals(demoPassword)) {
+        throw new RuntimeException("Contraseña incorrecta");
+    }
+
+    // Token ficticio (opcional: podrías usar JwtUtil si lo deseas)
+    String token = "fake-jwt-token-for-" + demoEmail;
+
+    return new LoginResponseDTO(token);
+}

@@ -1,0 +1,11 @@
+package fitlife.model;
+
+import java.util.List;
+
+public class Cliente extends User {
+    private String objetivo;
+    private double pesoInicial;
+    private List<String> planesContratados;
+
+    // Getters y setters
+}

@@ -1,0 +1,12 @@
+package fitlife.dto;
+
+import fitlife.model.User.Role;
+
+public class UserRequestDTO {
+    private String name;
+    private String email;
+    private String password;
+    private Role role;
+
+    // Getters y setters
+}
