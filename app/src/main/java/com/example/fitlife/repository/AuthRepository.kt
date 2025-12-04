@@ -1,13 +1,11 @@
-package com.example.fitlife.data.repository
+package com.example.fitlife.repository
 
-import com.example.fitlife.data.model.LoginRequest
-import com.example.fitlife.data.network.ApiService
+import com.example.fitlife.data.dto.LoginRequest
+import com.example.fitlife.data.dto.LoginResponse
+import com.example.fitlife.data.dto.RegisterRequest
 
-class AuthRepository(private val api: ApiService) {
-
-    suspend fun login(email: String, password: String) =
-        api.login(LoginRequest(email, password))
-
-    suspend fun getProfile() = api.getProfile()
+interface AuthRepository {
+    suspend fun login(request: LoginRequest): LoginResponse
+    suspend fun register(request: RegisterRequest): LoginResponse
+    suspend fun logout()
 }
-

@@ -6,8 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import com.example.fitlife.MainActivity
-import com.example.fitlife.data.network.RetrofitClient
-import com.example.fitlife.data.repository.AuthRepository
+import com.example.fitlife.repository.AuthRepositoryImpl
 import com.example.fitlife.utils.SessionManager
 
 class LoginActivity : ComponentActivity() {
@@ -15,9 +14,7 @@ class LoginActivity : ComponentActivity() {
     private lateinit var sessionManager: SessionManager
     private val viewModel: LoginViewModel by viewModels {
         LoginViewModelFactory(
-            AuthRepository(
-                RetrofitClient.create { sessionManager.getToken() }
-            )
+            AuthRepositoryImpl(this)
         )
     }
 

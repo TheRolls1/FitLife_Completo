@@ -2,7 +2,7 @@ package com.example.fitlife.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.fitlife.data.repository.AuthRepository
+import com.example.fitlife.repository.AuthRepository
 
 class LoginViewModelFactory(private val authRepository: AuthRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

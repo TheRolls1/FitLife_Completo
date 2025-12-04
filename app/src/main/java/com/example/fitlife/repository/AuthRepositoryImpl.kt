@@ -8,6 +8,7 @@ import com.example.fitlife.data.local.TokenManager
 import com.example.fitlife.data.local.TokenDataStore
 import com.example.fitlife.data.remote.ApiService
 import com.example.fitlife.data.remote.RetrofitClient
+import com.example.fitlife.repository.AuthRepository
 
 class AuthRepositoryImpl(private val context: Context) : AuthRepository {
     private val baseUrl = "http://10.0.2.2:3000"
