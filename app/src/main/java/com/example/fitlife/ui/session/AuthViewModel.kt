@@ -8,15 +8,20 @@ class AuthViewModel(
     private val authManager: AuthManager
 ) : ViewModel() {
 
+    fun login(email: String, password: String): UserRole? {
+        return authManager.login(email, password)
+    }
+
     fun register(email: String, password: String, role: UserRole) {
         authManager.register(email, password, role)
     }
 
-    fun login(email: String, password: String): Boolean {
-        return authManager.login(email, password)
+    fun getCurrentRole(): UserRole {
+        return authManager.getCurrentRole()
     }
 
-    fun recoverPassword(): String? {
-        return authManager.recoverPassword()
+    fun logout() {
+        authManager.logout()
     }
 }
+
