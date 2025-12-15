@@ -1,13 +1,6 @@
 package com.example.fitlife.data.dto
 
 
-/**
- * Data Transfer Objects (DTOs) para la autenticación y otros datos de la app.
- */
-
-
-
-
 data class PlanDto(
     val id: String,
     val titulo: String,
