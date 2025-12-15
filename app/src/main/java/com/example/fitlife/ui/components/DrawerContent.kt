@@ -10,6 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 
+
+
 @Composable
 fun DrawerContent(onNavigate: (String) -> Unit) {
     Column(modifier = Modifier.padding(16.dp)) {
@@ -23,4 +25,5 @@ fun DrawerContent(onNavigate: (String) -> Unit) {
         Text("Iniciar sesión", modifier = Modifier.padding(top = 16.dp).clickable { onNavigate("login") })
     }
 }
+
 

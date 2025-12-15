@@ -1,9 +1,15 @@
-package com.example.fitlife.domain.user
+package com.example.fitlife.data.dto
+
+
+import com.example.fitlife.domain.user.UserRole
+
 
 data class User(
-    val id: Long,
-    val name: String,
+    val id: Int,
+    val nombre: String,
+    val email: String,
     val role: UserRole
 )
+
 
 

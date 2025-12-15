@@ -1,6 +1,8 @@
 package com.example.fitlife.ui.screens
 
 
+
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -14,10 +16,17 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.fitlife.data.local.TokenManager
+import com.example.fitlife.domain.user.UserRole
+
+
 
 
 @Composable
 fun HomeMenuScreen(navController: NavController) {
+    val userRole = TokenManager.userRole.value
+
+
     // Usamos LazyColumn para un rendimiento óptimo y fácil espaciado.
     LazyColumn(
         modifier = Modifier
@@ -31,7 +40,7 @@ fun HomeMenuScreen(navController: NavController) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Spacer(modifier = Modifier.height(32.dp))
                 Text(
-                    text = "Bienvenido a FitLife SPA",
+                    text = if (userRole != null && userRole != UserRole.GUEST) "Bienvenido de Nuevo" else "Bienvenido a FitLife SPA",
                     style = MaterialTheme.typography.h4,
                     textAlign = TextAlign.Center
                 )
@@ -47,33 +56,66 @@ fun HomeMenuScreen(navController: NavController) {
         }
 
 
-        // Tarjetas del menú
-        item {
-            MenuCard(
-                title = "Iniciar Sesión / Registrarse",
-                subtitle = "Accede a tu perfil y guarda tu progreso.",
-                icon = Icons.Default.Login,
-                onClick = { navController.navigate("login") }
-            )
-        }
-        item {
-            MenuCard(
-                title = "Ver Planes",
-                subtitle = "Descubre nuestras suscripciones y beneficios.",
-                icon = Icons.Default.Star,
-                onClick = { navController.navigate("plans") }
-            )
-        }
-        item {
-            MenuCard(
-                title = "Entrenamiento",
-                subtitle = "Explora rutinas y ejercicios personalizados.",
-                icon = Icons.Default.FitnessCenter,
-                onClick = { navController.navigate("training") }
-            )
+
+
+        // Tarjetas del menú dinámicas según el rol
+        if (userRole != null && userRole != UserRole.GUEST) {
+            // --- Menú para usuarios que han iniciado sesión ---
+            item {
+                MenuCard(
+                    title = "Mi Entrenamiento",
+                    subtitle = "Continúa con tu rutina de hoy.",
+                    icon = Icons.Default.FitnessCenter,
+                    onClick = { navController.navigate("training") }
+                )
+            }
+            item {
+                MenuCard(
+                    title = "Mi Plan Nutricional",
+                    subtitle = "Revisa tus comidas y recetas.",
+                    icon = Icons.Default.RestaurantMenu,
+                    onClick = { navController.navigate("nutrition") }
+                )
+            }
+            item {
+                MenuCard(
+                    title = "Ver Mi Progreso",
+                    subtitle = "Estadísticas y seguimiento de tus metas.",
+                    icon = Icons.Default.TrendingUp,
+                    onClick = { navController.navigate("progress") }
+                )
+            }
+        } else {
+            // --- Menú para invitados ---
+            item {
+                MenuCard(
+                    title = "Iniciar Sesión / Registrarse",
+                    subtitle = "Accede a tu perfil y guarda tu progreso.",
+                    icon = Icons.Default.Login,
+                    onClick = { navController.navigate("login") }
+                )
+            }
+            item {
+                MenuCard(
+                    title = "Ver Planes",
+                    subtitle = "Descubre nuestras suscripciones y beneficios.",
+                    icon = Icons.Default.Star,
+                    onClick = { navController.navigate("plans") }
+                )
+            }
+            item {
+                MenuCard(
+                    title = "Entrenamiento",
+                    subtitle = "Explora rutinas y ejercicios personalizados.",
+                    icon = Icons.Default.FitnessCenter,
+                    onClick = { navController.navigate("training") }
+                )
+            }
         }
     }
 }
+
+
 
 
 /**
@@ -119,4 +161,5 @@ fun MenuCard(
         }
     }
 }
+
 

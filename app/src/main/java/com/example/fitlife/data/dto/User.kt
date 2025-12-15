@@ -1,10 +1,12 @@
-
-package com.example.fitlife.data.dto
+package com.example.fitlife.domain.user
 
 
 data class User(
-    val id: Int,
-    val nombre: String,
-    val email: String
+    val id: Long,
+    val name: String,
+    val role: UserRole
 )
+
+
+
 
